@@ -1,0 +1,51 @@
+---
+name: qb-cli-private
+description: >
+  Private QuickBooks instructions for [Your Company Name].
+  Company-specific workflows, account mappings, and business rules.
+---
+
+# QuickBooks — Private Business Rules
+
+This skill adds company-specific knowledge on top of the generic qb-cli tool.
+
+## Company Context
+
+- Company: [Your Company Name]
+- QuickBooks Environment: sandbox
+- Industry: [Your industry]
+
+## Common Workflows
+
+### Monthly Invoice Run
+When asked to "run monthly invoices" or "bill clients":
+1. List active customers: `~/skills/qb-cli/run.sh customer list --active-only`
+2. For each customer, create invoice with standard line items
+3. Send all invoices: `~/skills/qb-cli/run.sh invoice send <id>`
+
+### Record Payment
+When a payment comes in:
+1. Find the customer: `~/skills/qb-cli/run.sh customer query "SELECT * FROM Customer WHERE DisplayName = '...'"`
+2. Find open invoices: `~/skills/qb-cli/run.sh invoice query "SELECT * FROM Invoice WHERE CustomerRef = '...' AND Balance > '0'"`
+3. Apply payment (Phase 2): `~/skills/qb-cli/run.sh payment create --customer-id X --amount Y --invoice-id Z`
+
+## Account Mappings
+
+| Account Name | QB Account ID | Type |
+|---|---|---|
+| Consulting Revenue | TBD | Income |
+| Product Sales | TBD | Income |
+| Office Supplies | TBD | Expense |
+
+## Standard Line Items
+
+| Item Name | QB Item ID | Default Rate |
+|---|---|---|
+| Consulting Hour | TBD | $150.00 |
+| Site Visit | TBD | $500.00 |
+
+## Business Rules
+
+- All invoices use Net 30 terms unless specified otherwise
+- Tax rate: [your rate]
+- Invoices over $5,000 require a PO number

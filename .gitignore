@@ -1,0 +1,36 @@
+# Credentials — NEVER commit
+.env
+config/tokens.json
+config/config.json
+SKILL.private.md
+
+# Workspace output — contains sandbox/production financial data
+workspace/*.csv
+workspace/*.json
+workspace/*.txt
+workspace/*.sh
+workspace/*.ofx
+workspace/*.qfx
+workspace/*.qbo
+workspace/*.pdf
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
