@@ -5,6 +5,28 @@ description: >
   vendors, accounts, items, expenses, journal entries, deposits, transfers,
   estimates, purchase orders, and run financial reports directly via the Intuit API.
   164 commands across 29 command groups. All commands return JSON by default for agent consumption.
+version: 1.0.0
+metadata:
+  openclaw:
+    requires:
+      bins:
+        - docker
+        - docker-compose
+      env:
+        - QB_CLIENT_ID
+        - QB_CLIENT_SECRET
+        - QB_ENVIRONMENT
+    primaryEnv: QB_CLIENT_ID
+    emoji: "💰"
+    homepage: "https://github.com/claw4business/quickbooks-online-cli"
+    source: "https://github.com/claw4business/quickbooks-online-cli"
+    os:
+      - macos
+      - linux
+install:
+  - run: "git clone https://github.com/claw4business/quickbooks-online-cli.git ~/skills/qb-cli"
+  - run: "cp ~/skills/qb-cli/.env.example ~/skills/qb-cli/.env"
+  - run: "docker compose -f ~/skills/qb-cli/docker-compose.yml build"
 ---
 
 # qb-cli — QuickBooks Online CLI
