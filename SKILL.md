@@ -11,7 +11,7 @@ metadata:
     requires:
       bins:
         - docker
-        - docker-compose
+        - docker compose
       env:
         - QB_CLIENT_ID
         - QB_CLIENT_SECRET
